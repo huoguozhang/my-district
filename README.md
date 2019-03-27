@@ -49,10 +49,13 @@ export default {
   |  city     |      省  |   string      |     --  |   --  |
   |  area    |      省  |   string      |     --  |   --  |
   |  layoutLevel     |      显示级别 1: 省 2: 省+市 3：省+市+区  |   string      |    1,2,3  |   3  |
+
 #question:
 ***
+
 1. 数据不对怎么办？
 可以更改china.json文件,可以删改某项。
+
 ```
 ...
         "name": "天津市",
@@ -81,6 +84,7 @@ export default {
             }
       ...
 ```
+
   执行npm run make:area-json
 
 2.其他问题可以提issue
