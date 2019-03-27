@@ -17,12 +17,12 @@ vue + element-ui (el-select+el-option)的地区选择组件
 // es6
 // 全局
 // main.js
-import myDistrict from 'myDistrict'
+import myDistrict from 'my-district'
 Vue.use(myDistrict)
 // 局部
 // xxx.vue
 <script>
-import myDistrict from 'myDistrict'
+import myDistrict from 'my-district'
 export default {
     components: {
          myDistrict
@@ -81,9 +81,11 @@ export default {
             }
       ...
 ```
-执行npm run make:area-json
+  执行npm run make:area-json
+
 2.其他问题可以提issue
-[huoguozhang](https://github.com/huoguozhang)
-3.感谢
-[Orionwl](https://github.com/Orionwl)和[CutiePanther](https://github.com/CutiePanther)整理的地区json文件
+  [huoguozhang](https://github.com/huoguozhang)
+
+3.感谢:
+  [Orionwl](https://github.com/Orionwl)和[CutiePanther](https://github.com/CutiePanther)整理的地区json文件
 
