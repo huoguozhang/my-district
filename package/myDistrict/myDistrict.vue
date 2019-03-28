@@ -1,8 +1,12 @@
 <template>
   <div class="distinct-component-ct">
     <el-select
-      v-if="layoutLevel > 0"
-      class="width-200 f-l m-r-24"
+      :style="{
+        width: selectWidth + unit,
+        marginRight: layoutLevels.length > 1 ? (spaceWidth + unit) : 0
+      }"
+      :size="size"
+      v-if="layoutLevels.includes(1)"
       placeholder="请选择省份"
       filterable
       v-model="provinceSelect"
@@ -17,8 +21,12 @@
       </el-option>
     </el-select>
     <el-select
-      v-if="layoutLevel > 1"
-      class="width-200 f-l m-r-24"
+      :style="{
+          width: selectWidth + unit,
+          marginRight: layoutLevels.includes(3) ? (spaceWidth + unit) : 0
+        }"
+      :size="size"
+      v-if="layoutLevels.includes(2)"
       placeholder="请选择市"
       filterable
       v-model="citySelect"
@@ -33,8 +41,9 @@
       </el-option>
     </el-select>
     <el-select
-      v-if="layoutLevel > 2"
-      class="width-200 f-l m-r-24"
+      :style="{width: selectWidth + unit}"
+      :size="size"
+      v-if="layoutLevels.includes(3)"
       placeholder="请选择区"
       filterable
       v-model="areaSelect"
@@ -55,6 +64,7 @@ import provinceArr from './province.json'
 import { getAreas, getCitys } from './getData.js'
 import { Select, Option } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import styleProps from './styleProps'
 export default {
   name: 'myDistrict',
   components: {
@@ -62,6 +72,16 @@ export default {
     ElOption: Option
   },
   props: {
+    ...styleProps,
+    layoutLevels: {
+      type: Array,
+      default () {
+        return [1, 2, 3]
+      },
+      validator (value) {
+        return !value.some(v => ![1, 2, 3].includes(v))
+      }
+    },
     layoutLevel: {
       type: Number,
       default: 3,

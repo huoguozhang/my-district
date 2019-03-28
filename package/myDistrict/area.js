@@ -23,13 +23,7 @@ fs.readFile('./package/myDistrict/china.json', (err, data) => {
       chinaObj[chinaJson[i].name][child1[j].name] = arr
     }
   }
-  let fileNames = {
-    chinaObj: {
-      name: 'package/myDistrict/district.json',
-      value: chinaObj},
-    provinceArr: {
-      name: 'package/myDistrict/province.json',
-      value: provinceArr}}
+  let fileNames = {chinaObj: {name: 'district.json', value: chinaObj}, provinceArr: {name: 'province.json', value: provinceArr}}
   for (let key in fileNames) {
     var writerStream = fs.createWriteStream(`./${fileNames[key].name}`)
     // 使用 utf8 编码写入数据

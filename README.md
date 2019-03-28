@@ -8,21 +8,23 @@ vue + element-ui (el-select+el-option)的地区选择组件
 实现了：省+市+区
 #说明：
 ***
-目前为0.01版
+目前为1.0.0版
 后期会考虑单独实现select和增加form表单的校验，各ui组件能通过校验
 #使用
 ***
-1. 引入
+
+1 引入
+
 ```
 // es6
 // 全局
 // main.js
-import myDistrict from 'my-district'
+import {myDistrict} from 'my-district'
 Vue.use(myDistrict)
 // 局部
 // xxx.vue
 <script>
-import myDistrict from 'my-district'
+import {myDistrict} from 'my-district'
 export default {
     components: {
          myDistrict
@@ -30,7 +32,9 @@ export default {
 }
 </script>
 ```
-2. 使用
+
+2 使用
+
 ```
 <template>
       <myDistrict
@@ -48,13 +52,26 @@ export default {
   |  province     |      省  |   string      |     --  |   --  |
   |  city     |      省  |   string      |     --  |   --  |
   |  area    |      省  |   string      |     --  |   --  |
-  |  layoutLevel     |      显示级别 1: 省 2: 省+市 3：省+市+区  |   string      |    1,2,3  |   3  |
- 
- #question:
+  |  layoutLevels     |      显示级别 1省2市3区 1 2 3 自由组合，但前面的值必须提供  |   array      |    1,2,3 构成的数组  |  [1,2,3] |
+  |uint|样式长度单位|string|px,%等|px
+  |size|element组件的size|string|mini,small,medium|--|
+  |selectWidth|select组件的宽度|number|--|200|
+  |spaceWidth|两个select的间隙|number|--|24|
+
+4 其他使用可与调取内置函数
+
+|名称|说明|参数用法|
+|:-:|:-:|:-:|
+|provinceArr|省列表|--|
+|getCitys|获取市列表，提供省中文名|getCitys('浙江省')|
+|getArea|获取区县列表，提供省市中文名|getAreas('浙江省', '杭州市')|
+```
+import { getAreas, getCitys, provinceArr } from 'my-district'
+```
+#question:
 ***
 1. 数据不对怎么办？
 可以更改china.json文件,可以删改某项。
-
 ```
 ...
         "name": "天津市",
@@ -83,12 +100,12 @@ export default {
             }
       ...
 ```
-
-  执行npm run make:area-json
+执行npm run make:area-json
 
 2.其他问题可以提issue
-  [huoguozhang](https://github.com/huoguozhang)
 
-3.感谢:
-  [Orionwl](https://github.com/Orionwl)和[CutiePanther](https://github.com/CutiePanther)整理的地区json文件
+[huoguozhang](https://github.com/huoguozhang/my-district)
+3.感谢
+
+[Orionwl](https://github.com/Orionwl)和[CutiePanther](https://github.com/CutiePanther)整理的地区json文件
 
