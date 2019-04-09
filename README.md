@@ -1,6 +1,8 @@
 #效果
 ***
 ![效果图](https://upload-images.jianshu.io/upload_images/6036420-b909eb7114eb9325.gif?imageMogr2/auto-orient/strip)
+预览地址：[https://huoguozhang.github.io/my-district/dist/](https://huoguozhang.github.io/my-district/dist/)
+github:[https://github.com/huoguozhang/my-district](https://github.com/huoguozhang/my-district)
 
 #介绍：
 ***
