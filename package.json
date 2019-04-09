@@ -1,8 +1,15 @@
 {
   "name": "my-district",
-  "version": "0.1.0",
+  "version": "2.0.0",
   "author": "https://github.com/huoguozhang",
-  "keywords":["vue", "district", "地区", "省", "市", "区"],
+  "keywords": [
+    "vue",
+    "district",
+    "地区",
+    "省",
+    "市",
+    "区"
+  ],
   "main": "package/myDistrict/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",

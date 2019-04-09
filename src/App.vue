@@ -1,26 +1,60 @@
 <template>
   <div id="app">
-    <myDistrict></myDistrict>
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form-item prop="district">
+        <myDistrict
+          :province.sync="ruleForm.district.province"
+          :city.sync="ruleForm.district.city"
+          :area.sync="ruleForm.district.area"
+        ></myDistrict>
+      </el-form-item>
+      <el-button @click="submitForm('ruleForm')">提交</el-button>
+    </el-form>
   </div>
 </template>
 
 <script>
-import myDistrict from '../package/myDistrict'
+let checkDistrict= (rule, {province, city, area}, cb) => {
+  if (!province) {
+    cb(new Error('请选择省'))
+  } else if (!city) {
+    cb(new Error('请选择市'))
+  } else if (!area) {
+    cb(new Error('请选择区'))
+  } else {
+    cb()
+  }
+}
 export default {
   name: 'app',
-  components: {
-    myDistrict
+  data() {
+    return {
+      ruleForm: {
+        district: {
+          province: '',
+          city: '',
+          area: ''
+        }
+      },
+      rules: {
+        district: [
+          {validator: checkDistrict, trigger: 'blur'},
+          {validator: checkDistrict, trigger: 'change'}
+        ]
+      }
+    }
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          // sconsole.log('error submit!!')
+          return false
+        }
+      })
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

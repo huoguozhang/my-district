@@ -4,6 +4,8 @@ myDistrict.install = function (Vue) {
   Vue.component(myDistrict.name, myDistrict)
 }
 export {
-  myDistrict,
-  getAreas, getCitys, provinceArr
+  myDistrict as default,
+  getAreas,
+  getCitys,
+  provinceArr
 }

@@ -8,8 +8,6 @@ vue + element-ui (el-select+el-option)的地区选择组件
 实现了：省+市+区
 #说明：
 ***
-目前为1.0.0版
-后期会考虑单独实现select和增加form表单的校验，各ui组件能通过校验
 #使用
 ***
 
@@ -19,12 +17,12 @@ vue + element-ui (el-select+el-option)的地区选择组件
 // es6
 // 全局
 // main.js
-import {myDistrict} from 'my-district'
+import myDistrict from 'my-district'
 Vue.use(myDistrict)
 // 局部
 // xxx.vue
 <script>
-import {myDistrict} from 'my-district'
+import myDistrict from 'my-district'
 export default {
     components: {
          myDistrict
@@ -50,8 +48,8 @@ export default {
   | 参数 | 说明 | 类型 | 可选值 | 默认值|
   |:------: |:------: |:-------:|:---------:|:---------:|
   |  province     |      省  |   string      |     --  |   --  |
-  |  city     |      省  |   string      |     --  |   --  |
-  |  area    |      省  |   string      |     --  |   --  |
+  |  city     |     市  |   string      |     --  |   --  |
+  |  area     |      区  |   string      |     --  |   --  |
   |  layoutLevels     |      显示级别 1省2市3区 1 2 3 自由组合，但前面的值必须提供  |   array      |    1,2,3 构成的数组  |  [1,2,3] |
   |uint|样式长度单位|string|px,%等|px
   |size|element组件的size|string|mini,small,medium|--|
@@ -67,6 +65,70 @@ export default {
 |getArea|获取区县列表，提供省市中文名|getAreas('浙江省', '杭州市')|
 ```
 import { getAreas, getCitys, provinceArr } from 'my-district'
+```
+5 和ui库的form表单结合,此处用的element,你可以使用其他的ui库的自定义规则，校验规则由你自己定义。
+```
+<template>
+  <div id="app">
+    <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form-item prop="district">
+        <myDistrict
+          :province.sync="ruleForm.district.province"
+          :city.sync="ruleForm.district.city"
+          :area.sync="ruleForm.district.area"
+        ></myDistrict>
+      </el-form-item>
+      <el-button @click="submitForm('ruleForm')">提交</el-button>
+    </el-form>
+  </div>
+</template>
+
+<script>
+let checkDistrict= (rule, {province, city, area}, cb) => {
+  if (!province) {
+    cb(new Error('请选择省'))
+  } else if (!city) {
+    cb(new Error('请选择市'))
+  } else if (!area) {
+    cb(new Error('请选择区'))
+  } else {
+    cb()
+  }
+}
+export default {
+  name: 'app',
+  data() {
+    return {
+      ruleForm: {
+        district: {
+          province: '',
+          city: '',
+          area: ''
+        }
+      },
+      rules: {
+        district: [
+          {validator: checkDistrict, trigger: 'blur'},
+          {validator: checkDistrict, trigger: 'change'}
+        ]
+      }
+    }
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          alert('submit!')
+        } else {
+          // sconsole.log('error submit!!')
+          return false
+        }
+      })
+    }
+  }
+}
+</script>
+
 ```
 #question:
 ***
