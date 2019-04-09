@@ -58,15 +58,16 @@ export default {
 
 4 其他使用可与调取内置函数
 
-|名称|说明|参数用法|
-|:-:|:-:|:-:|
-|provinceArr|省列表|--|
-|getCitys|获取市列表，提供省中文名|getCitys('浙江省')|
-|getArea|获取区县列表，提供省市中文名|getAreas('浙江省', '杭州市')|
+  |名称|说明|参数用法|
+  |:--------:|:-------------------:|:-----------:|
+  |provinceArr|            省列表|               --|
+  |getCitys|获取市列表，提供省中文名|           getCitys('浙江省')|
+  |getArea|获取区县列表，提供省市中文名|getAreas('浙江省', '杭州市')|
+
 ```
 import { getAreas, getCitys, provinceArr } from 'my-district'
 ```
-5 和ui库的form表单结合,此处用的element,你可以使用其他的ui库的自定义规则，校验规则由你自己定义。
+5 和ui库的form表单结合,此处用的element,你可以使用其他的ui库，校验规则由你自己定义。
 ```
 <template>
   <div id="app">

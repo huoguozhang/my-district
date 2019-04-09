@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import {Form, FormItem, Button } from 'element-ui'
 let checkDistrict= (rule, {province, city, area}, cb) => {
   if (!province) {
     cb(new Error('请选择省'))
@@ -27,6 +28,11 @@ let checkDistrict= (rule, {province, city, area}, cb) => {
 }
 export default {
   name: 'app',
+  components: {
+    ElButton: Button,
+    ElForm: Form,
+    ElFormItem: FormItem
+  },
   data() {
     return {
       ruleForm: {
