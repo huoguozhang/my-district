@@ -10,9 +10,9 @@ github:[https://github.com/huoguozhang/my-district](https://github.com/huoguozha
 ***
 vue + element-ui (el-select+el-option)的地区选择组件
 实现了：省+市+区
-#说明：
+# 说明：
 ***
-#使用
+# 使用
 ***
 
 1 引入
@@ -135,7 +135,7 @@ export default {
 </script>
 
 ```
-#question:
+# question:
 ***
 1. 数据不对怎么办？
 可以更改china.json文件,可以删改某项。
