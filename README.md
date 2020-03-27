@@ -6,7 +6,7 @@
 
 github:[https://github.com/huoguozhang/my-district](https://github.com/huoguozhang/my-district)
 
-#介绍：
+# 介绍：
 ***
 vue + element-ui (el-select+el-option)的地区选择组件
 实现了：省+市+区
